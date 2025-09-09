@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Cadastro de Usuário</title>
+    <link rel="stylesheet" th:href="@{/css/auth.css}">
 </head>
 <body>
 <h1>Cadastro de Usuário</h1>
@@ -10,7 +11,7 @@
 <p th:if="${erro}" th:text="${erro}" style="color:red"></p>
 <p th:if="${sucesso}" th:text="${sucesso}" style="color:green"></p>
 
-<form th:action="@{cadastro}" method="post" th:object="${usuario}">
+<form th:action="@{cadastro}" method="post" th:object="${cliente}">
     <label>Nome:</label>
     <input type="text" th:field="*{nome}" required><br><br>
 

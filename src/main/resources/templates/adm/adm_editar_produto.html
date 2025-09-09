@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Produto</title>
+    <link rel="stylesheet" th:href="@{/css/edit.css}">
+</head>
+<body>
+<h1>Editar Produto</h1>
+
+<p th:if="${erro}" th:text="${erro}" style="color:red"></p>
+<p th:if="${sucesso}" th:text="${sucesso}" style="color:green"></p>
+
+<form th:action="@{}" method="post" th:object="${produto}"> <!-- Precisa criar endpoint mapeado e editar essa linha -->
+
+    <label>ID:</label>
+    <input type="text" th:field="*{id}" readonly style="background-color: #f0f0f0;"><br><br>
+
+    <label>Nome:</label>
+    <input type="text" th:field="*{nome}" name="nome" required><br><br>
+    <br><br>
+
+    <button type="submit">Salvar Alterações</button>
+    <a th:href="@{/produtos}">Cancelar</a> <!-- Precisa criar endpoint mapeado-->
+</form>
+</body>
+</html>
