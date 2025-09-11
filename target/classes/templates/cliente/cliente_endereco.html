@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Endereço</title>
+    <link rel="stylesheet" th:href="@{/css/auth.css}">
+</head>
+<h2>Olá, <span th:text="${cliente.nome}"></span>!</h2>
+<div>
+    <a href="../cliente/cliente_minha_conta.html"><button type="button">Meus Dados</button></a>
+    <a href="../cliente/cliente_meus_pedidos.html"><button type="button">Meus Pedidos</button></a>
+    <a href="../cliente/cliente_endereco.html"><button type="button">Endereço</button></a>
+    <a href=""><button type="button">Sair</button></a>
+</div>
+
+<body>
+    <h2>Meus endereços de entrega</h2>
+    
+    <table id="tabelaEnderecos" border="1" cellpadding="5" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Rua</th>
+                <th>Número</th>
+                <th>Complemento</th>
+                <th>Bairro</th>
+                <th>CEP</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Endereços -->
+        </tbody>
+    <a href="../cliente/cliente_novo_endereco.html"><button type="button">Adicionar novo endereço</button></a>
+    </table>
+    
+
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Listagem de Clientes</title>
+    <link rel="stylesheet" th:href="@{/css/list.css}">
+</head>
+<body>
+
+<h1>Lista de Clientes</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>CPF</th>
+        <th>Alterar</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr th:each="cliente : ${clientes}">
+        <td th:text="${cliente.id}"></td>
+        <td th:text="${cliente.nome}"></td>
+        <td th:text="${cliente.email}"></td>
+        <td th:text="${cliente.cpf}"></td>
+        <td> <a th:href="@{}">Editar</a> </td> <!-- Precisa criar endpoint mapeado e editar essa linha -->
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

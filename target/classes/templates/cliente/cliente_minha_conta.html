@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Minha Conta</title>
+    <link rel="stylesheet" th:href="@{/css/auth.css}">
+</head>
+ <h2>Olá, <span th:text="${cliente.nome}"></span>!</h2>
+  <div>
+    <a href="../cliente/cliente_minha_conta.html"><button type="button">Meus Dados</button></a>
+    <a href="../cliente/cliente_meus_pedidos.html"><button type="button">Meus Pedidos</button></a>
+    <a href="../cliente/cliente_endereco.html"><button type="button">Endereço</button></a>
+    <a href=""><button type="button">Sair</button></a>
+
+
+    </div>
+
+<body>
+    <h1>Dados Pessoais</h1>
+
+    <p th:if="${erro}" th:text="${erro}" style="color:red"></p>
+    <p th:if="${sucesso}" th:text="${sucesso}" style="color:green"></p>
+
+ <form th:action="@{cadastro}" method="post" th:object="${cliente}">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" th:field="*{nome}" readonly>
+        <br><br>
+
+        <label for="cpf">CPF:</label>
+        <input type="text" id="cpf" th:field="*{cpf}" readonly>
+        <br><br>
+
+        <label for="email">Email:</label>
+        <input type="text" id="email" th:field="*{email}" readonly>
+        <br><br>
+
+        <label for="telefone">Telefone:</label>
+        <input type="text" id="telefone" th:field="*{telefone}" readonly>
+        <br><br>
+
+        <label for="dataNascimento">Data de Nascimento:</label>
+        <input type="text" id="dataNascimento" th:field="*{dataNascimento}" readonly>
+        <br><br>
+
+        <button type="button" id="editarBtn" onclick="ativarEdicao()">Editar</button>
+        <button type="submit" id="salvarBtn" style="display:none;">Salvar Alterações</button>
+    </form>
+
+    <script>
+        function ativarEdicao() {
+            const campos = document.querySelectorAll('input[readonly]');
+            campos.forEach(campo => campo.removeAttribute('readonly'));
+
+            document.getElementById('editarBtn').style.display = 'none';
+            document.getElementById('salvarBtn').style.display = 'inline-block';
+        }
+    </script>
+</body>
+</html>
