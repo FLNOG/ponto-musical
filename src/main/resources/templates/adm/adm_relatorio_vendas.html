@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Relatório de Vendas</title>
+    <link rel="stylesheet" th:href="@{/css/list.css}">
+</head>
+<body>
+
+<h1>Relatório de Vendas</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID Venda</th>
+        <th>Data</th>
+        <th>Cliente</th>
+        <th>Produto</th>
+        <th>Quantidade</th>
+        <th>Valor Total</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="venda : ${vendas}">
+        <td th:text="${venda.id}"></td>
+        <td th:text="${#temporals.format(venda.data, 'dd/MM/yyyy')}"></td>
+        <td th:text="${venda.cliente.nome}"></td>
+        <td th:text="${venda.produto.nome}"></td>
+        <td th:text="${venda.quantidade}"></td>
+        <td th:text="${venda.valorTotal}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
