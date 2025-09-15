@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Ponto Musical</title>
     <link rel="stylesheet" href="../static/css/home.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
+
 <body>
     <main>
         <header>
@@ -33,6 +35,119 @@
                 </div>
             </div>
         </header>
+
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Find Your Perfect Instrument</h1>
+                <p>Discover the world's finest musical instruments with unbeatable quality and prices.</p>
+                <button class="shop-now">Shop Now</button>
+            </div>
+        </section>
+
+        <section class="categories">
+            <h2>Shop by Category</h2>
+            <div class="category-container">
+
+                <div class="category-card">
+                    <i class="fas fa-guitar"></i>
+                    <p>Strings</p>
+                </div>
+
+                <div class="category-card">
+                    <i class="fas fa-drum"></i>
+                    <p>Percussion</p>
+                </div>
+
+                <div class="category-card">
+                    <i class="fas fa-music"></i>
+                    <p>Winds</p>
+                </div>
+
+                <div class="category-card">
+                    <i class="fas fa-keyboard"></i>
+                    <p>Keyboards</p>
+                </div>
+
+                <div class="category-card">
+                    <i class="fas fa-headphones"></i>
+                    <p>Accessories</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="best-sellers">
+            <h2>Best Sellers</h2>
+            <div class="products-container">
+                <form class="product-card" method="GET" action="/adicionar">
+                    <input type="hidden" name="produto" value="acoustic-guitar-pro">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Guitar.jpg" alt="Acoustic Guitar Pro">
+                    <div class="product-info">
+                        <h3>Acoustic Guitar Pro</h3>
+
+                        <div class="rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="reviews">(124)</span>
+                        </div>
+
+                        <p class="price">$599</p>
+                        <button type="submit" class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add to
+                            Cart</button>
+                    </div>
+                </form>
+
+                <form class="product-card" method="GET" action="/adicionar">
+                    <input type="hidden" name="produto" value="digital-piano-88">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d8/Yamaha_DGX-620_keyboard.jpg"
+                        alt="Digital Piano 88">
+                    <div class="product-info">
+
+                        <h3>Digital Piano 88</h3>
+                        <div class="rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="reviews">(89)</span>
+                        </div>
+                        
+                        <p class="price">$1,299</p>
+                        <button type="submit" class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add to
+                            Cart</button>
+                    </div>
+                </form>
+
+                <form class="product-card" method="GET" action="/adicionar">
+                    <input type="hidden" name="produto" value="professional-drum-kit">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/8f/Drum_kit.jpg"
+                        alt="Professional Drum Kit">
+
+                    <div class="product-info">
+                        <h3>Professional Drum Kit</h3>
+                        <div class="rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="reviews">(67)</span>
+                        </div>
+                        <p class="price">$899</p>
+                        <button type="submit" class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add to
+                            Cart</button>
+                    </div>
+                </form>
+
+                <form class="product-card" method="GET" action="/adicionar">
+                    <input type="hidden" name="produto" value="alto-saxophone">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Saxophone_alto.jpg"
+                        alt="Alto Saxophone">
+                    <div class="product-info">
+                        <h3>Alto Saxophone</h3>
+                        <div class="rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="reviews">(45)</span>
+                        </div>
+                        <p class="price">$1,599</p>
+                        <button type="submit" class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add to
+                            Cart</button>
+                    </div>
+                </form>
+            </div>
+        </section>
     </main>
 </body>
+
 </html>
