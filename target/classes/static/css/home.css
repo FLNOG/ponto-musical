@@ -9,13 +9,13 @@ main{
     flex-direction: column;
 
     height: auto;
-    width: 100vw;
+    width: 100%;
 }
 
 header{
     display: flex;
 
-    height: 60px;
+    height: 80px;
     width: 100%;
 
     align-items: center;
@@ -75,9 +75,9 @@ header{
     align-items: center;
     justify-content: center;
 
-    height: 300px;
+    height: 400px;
 
-    background-color: #1E73F0;
+    background-color: #000000;
     color: white;
 
     text-align: center;
@@ -96,7 +96,7 @@ header{
 
 .shop-now {
     background-color: white;
-    color: #1E73F0;
+    color: #000000;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -116,7 +116,7 @@ header{
     justify-content: center;
     flex-direction: column;
 
-    height: 300px;
+    height: 400px;
 
     background-color: #f9f9f9;
     text-align: center;
@@ -169,17 +169,24 @@ header{
     display: flex;
     flex-direction: column;
 
-
     align-items: center;
     justify-content: center;
+
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+.best-sellers h2{
+    margin: 20px;
 }
 
 .products-container{
     display: flex;
 
     align-items: center;
-
     margin-top: 30px;
+
+    gap: 60px;
 }
 
 .products-container form.product-card {
@@ -190,7 +197,8 @@ header{
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 
-    width: 220px;
+    height: 320px;
+    width: 260px;
     overflow: hidden;
 
     transition: transform 0.3s ease;
@@ -213,7 +221,7 @@ header{
 
 .products-container form.product-card button.add-to-cart {
     width: 100%;
-    background-color: #1E73F0;
+    background-color: #000000;
     color: #fff;
     border: none;
     padding: 10px;
@@ -228,5 +236,91 @@ header{
 }
 
 .products-container form.product-card button.add-to-cart:hover {
-    background-color: #1556b6;
+    background-color: #b68615;
+}
+
+/* --- FOOTER SECTION --- */
+.footer {
+    background-color: #111; /* fundo preto */
+    color: #fff;
+    padding: 60px 30px 20px;
+    font-size: 0.9rem;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    
+    max-width: 1200px;
+
+    gap: 30px;
+    margin: 0 auto;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #333;
+}
+
+.footer-column h3 {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.footer-column h4 {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.footer-column p {
+    margin-bottom: 15px;
+    color: #ccc;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 8px;
+}
+
+.footer-column ul li a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-column ul li a:hover {
+    color: #fff;
+}
+
+.social-icons a {
+    color: #ccc;
+    margin-right: 10px;
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: #fff;
+}
+
+.contact-info li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #ccc;
+}
+
+.contact-info li i {
+    color: #fff;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 10px;
+    color: #ccc;
+    font-size: 0.85rem;
 }
