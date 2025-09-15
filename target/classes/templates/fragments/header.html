@@ -1,0 +1,19 @@
+<!-- templates/fragments/header.html -->
+<header id="mainHeader" th:fragment="main-header" xmlns:th="http://www.w3.org/1999/xhtml">
+  <div class="img-container">
+    <img src="/path-to-logo.png" alt="Ponto Musical Logo" />
+    <h1>Ponto Musical</h1>
+  </div>
+
+  <div class="search-bar">
+    <input type="text" id="siteSearch" placeholder="Buscar instrumentos..." />
+    <i class="fas fa-search search-icon"></i>
+  </div>
+
+  <div class="content-icons">
+    <a href="/conta"><i class="fas fa-user"></i></a>
+    <a href="/carrinho"><i class="fas fa-shopping-cart"></i></a>
+  </div>
+
+  <script src="/js/menu-component.js"></script>
+</header>

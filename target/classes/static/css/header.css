@@ -1,0 +1,65 @@
+header {
+    display: flex;
+    height: auto;
+    width: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: transparent;
+    z-index: 2;
+    position: fixed;
+}
+
+.img-container {
+    display: flex;
+    height: auto;
+    width: 20%;
+}
+
+.img-container > img {
+    height: 40px;
+    width: 40px;
+}
+
+.img-container > h1 {
+    color: white;
+    margin-left: 10%;
+}
+
+.search-bar {
+    width: 35%;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+#siteSearch {
+    padding: 10px 15px 10px 15px;
+    font-size: 16px;
+    border: 1px solid #ffffff;
+    border-radius: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: transparent;
+}
+
+.search-icon {
+    position: absolute;
+    right: 15px;
+}
+
+.content-icons {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 40px;
+    width: 20%;
+}
+
+.content-icons a {
+    color: white;
+    text-decoration: none;
+}
+
+.fas {
+    color: white;
+}
