@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Produtos Mais Vendidos</title>
+    <link rel="stylesheet" th:href="@{/css/list.css}">
+</head>
+<body>
+
+<h1>Relatório de Produtos Mais Vendidos</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID Produto</th>
+        <th>Nome</th>
+        <th>Quantidade Vendida</th>
+        <th>Valor Total</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="produto : ${produtosMaisVendidos}">
+        <td th:text="${produto.id}"></td>
+        <td th:text="${produto.nome}"></td>
+        <td th:text="${produto.quantidadeVendida}"></td>
+        <td th:text="${produto.valorTotal}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
