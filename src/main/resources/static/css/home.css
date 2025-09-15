@@ -12,30 +12,53 @@ main{
     width: 100%;
 }
 
-header{
+header {
+    padding-top: 20px;
+
     display: flex;
-
-    height: 80px;
+    height: auto;
     width: 100%;
-
     align-items: center;
     justify-content: space-evenly;
+    background-color: transparent;
 
-    box-shadow: 0px 0px 5px 1px;
+    position: relative; 
+    z-index: 2;         
+}
 
-    z-index: 1;
+.hero {
+    position: relative;
+    z-index: 1;         
+    height: 500px;
+    margin-top: -80px;  
+    background-image: url("https://thumbs.dreamstime.com/b/musical-instruments-background-wallpaper-abstract-music-hd-banner-292193248.jpg");
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+}
+
+header > img{
+    color: white;
 }
 
 .img-container{
+
+
     display: flex;
 
     height: auto;
-    width: auto;
+    width: 20%;
 }
 
 .img-container > img{
     height: 40px;
     width: 40px;
+}
+
+.img-container > h1{
+    color: white;
+    margin-left: 10%;
 }
 
 .search-bar {
@@ -48,10 +71,11 @@ header{
 #siteSearch {
     padding: 10px 15px 10px 15px;
     font-size: 16px;
-    border: 1px solid #ccc;
+    border: 1px solid #ffffff;
     border-radius: 10px;
     width: 100%;
     box-sizing: border-box;
+    background-color: transparent;
 }
 
 .search-icon {
@@ -69,24 +93,30 @@ header{
     width: 20%;
 }
 
-.hero {
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    height: 400px;
-
-    background-color: #000000;
+.content-icons a{
     color: white;
-
-    text-align: center;
+    text-decoration: none;
 }
 
 .hero-content h1 {
     font-size: 2.5rem;
     font-weight: bold;
     margin-bottom: 10px;
+    color: white;
+}
+
+.hero-blur, .category-blur, .best-seller-blur{
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    height: 100%;
+    width: 100%;
+
+    backdrop-filter: blur(5px);
 }
 
 .hero-content p {
@@ -95,18 +125,23 @@ header{
 }
 
 .shop-now {
-    background-color: white;
-    color: #000000;
+    background: #f08c00;
+    color: #ffffff;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: .2s;
 }
 
 .shop-now:hover {
-    background-color: #f2f2f2;
+    transform: scale(1.1);
+    box-shadow: 5px 5px 20px 2px black;
+}
+
+.fas{
+    color: white;
 }
 
 .categories {
@@ -116,10 +151,12 @@ header{
     justify-content: center;
     flex-direction: column;
 
-    height: 400px;
+    height: 600px;
 
-    background-color: #f9f9f9;
-    text-align: center;
+    background-image: url("https://w0.peakpx.com/wallpaper/517/481/HD-wallpaper-guitar-hand-instrument-music-new-nice-play.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
 }
 
 .categories h2 {
@@ -138,7 +175,6 @@ header{
     flex-direction: column;
     align-items: center;
 
-    background-color: white;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 
     border-radius: 10px;
@@ -155,7 +191,7 @@ header{
 
 .category-card i {
     font-size: 2rem;
-    color: #1E73F0;
+    color: #f08c00;
     margin-bottom: 10px;
 }
 
@@ -163,6 +199,11 @@ header{
     margin: 0;
     font-size: 1rem;
     font-weight: 500;
+    color: white;
+}
+
+.categories h2{
+    color: white;
 }
 
 .best-sellers{
@@ -172,12 +213,17 @@ header{
     align-items: center;
     justify-content: center;
 
-    margin-top: 30px;
-    margin-bottom: 40px;
+    background-image: url("https://c4.wallpaperflare.com/wallpaper/257/116/964/light-strings-music-sound-wallpaper-preview.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+
+    height: 600px;
 }
 
 .best-sellers h2{
     margin: 20px;
+    color: white;
 }
 
 .products-container{
@@ -193,9 +239,11 @@ header{
     display: flex;
     flex-direction: column;
 
-    background-color: #fff;
+    background-color: transparent;
     border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+
+    border: 1px solid white;
 
     height: 320px;
     width: 260px;
@@ -215,13 +263,17 @@ header{
     object-fit: cover;
 }
 
+.product-info{
+    color: white;
+}
+
 .products-container form.product-card .product-info {
     padding: 15px;
 }
 
 .products-container form.product-card button.add-to-cart {
     width: 100%;
-    background-color: #000000;
+    background-color: #f08c00;
     color: #fff;
     border: none;
     padding: 10px;
@@ -236,12 +288,12 @@ header{
 }
 
 .products-container form.product-card button.add-to-cart:hover {
-    background-color: #b68615;
+    background-color: #ffffff;
 }
 
 /* --- FOOTER SECTION --- */
 .footer {
-    background-color: #111; /* fundo preto */
+    background-color: #000000;
     color: #fff;
     padding: 60px 30px 20px;
     font-size: 0.9rem;
