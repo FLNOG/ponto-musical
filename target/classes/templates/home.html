@@ -1,227 +1,148 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <title>Ponto Musical</title>
     <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/header.css" />
+    <link rel="stylesheet" href="/css/footer.css" />
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
 <body>
-    <main>
-        <!-- Header Section -->
-        <header id="mainHeader">
-            <div class="img-container">
-                <i class="fas fa-music fa-3x note-icon" aria-hidden="true"></i>
-                <h1>Ponto Musical</h1>
-            </div>
 
-            <div class="search-bar">
-                <input type="search" placeholder="Pesquisar instrumentos..." id="siteSearch">
-                <i class="fas fa-search search-icon"></i>
-            </div>
+<!-- Header importado -->
+<div th:replace="fragments/header :: main-header"></div>
 
-            <div class="content-icons">
-                <div>
-                    <a href="">Loja</a>
+<main>
+    <section class="hero">
+        <div class="hero-blur">
+            <div class="hero-content">
+                <h1>Encontre seu instrumento favorito!</h1>
+                <p>Descubra o mundo da música por um preço acessivel</p>
+                <button class="shop-now">Compre agora</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories">
+        <div class="category-blur">
+            <h2>Categorias</h2>
+            <div class="category-container">
+
+                <div class="category-card">
+                    <i class="fas fa-guitar"></i>
+                    <p>Strings</p>
                 </div>
 
-                <div>
-                    <a href="">Conta</a>
+                <div class="category-card">
+                    <i class="fas fa-drum"></i>
+                    <p>Percussion</p>
                 </div>
 
-                <div>
-                    <i class="fas fa-shopping-cart"></i>
+                <div class="category-card">
+                    <i class="fas fa-music"></i>
+                    <p>Winds</p>
                 </div>
-            </div>
-        </header>
 
-        <script>
-            // ao rolar a tela
-            window.addEventListener("scroll", function () {
-                const header = document.getElementById("mainHeader");
+                <div class="category-card">
+                    <i class="fas fa-keyboard"></i>
+                    <p>Keyboards</p>
+                </div>
 
-                if (window.scrollY > 50) {
-                    // altera cor ao passar de 50px de scroll
-                    header.style.backgroundColor = "#222"; // cor nova
-                    header.style.transition = "background-color 0.3s ease";
-                } else {
-                    // volta à cor original
-                    header.style.backgroundColor = "transparent";
-                }
-            });
-        </script>
-
-        <section class="hero">
-            <div class="hero-blur">
-                <div class="hero-content">
-                    <h1>Encontre seu instrumento favorito!</h1>
-                    <p>Descubra o mundo da música por um preço acessivel</p>
-                    <button class="shop-now">Compre agora</button>
+                <div class="category-card">
+                    <i class="fas fa-headphones"></i>
+                    <p>Accessories</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Categories Section -->
-        <section class="categories">
-            <div class="category-blur">
-                <h2>Categorias</h2>
-                <div class="category-container">
+    <!-- Products Section -->
+    <section class="best-sellers">
+        <div class="best-seller-blur">
+            <h2>Nossos produtos mais vendidos</h2>
+            <div class="products-container">
+                <form class="product-card" method="GET" action="/adicionar">
+                    <input type="hidden" name="produto" value="acoustic-guitar-pro">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Guitar.jpg"
+                         alt="Acoustic Guitar Pro">
+                    <div class="product-info">
+                        <h3>Acoustic Guitar Pro</h3>
 
-                    <div class="category-card">
-                        <i class="fas fa-guitar"></i>
-                        <p>Strings</p>
-                    </div>
-
-                    <div class="category-card">
-                        <i class="fas fa-drum"></i>
-                        <p>Percussion</p>
-                    </div>
-
-                    <div class="category-card">
-                        <i class="fas fa-music"></i>
-                        <p>Winds</p>
-                    </div>
-
-                    <div class="category-card">
-                        <i class="fas fa-keyboard"></i>
-                        <p>Keyboards</p>
-                    </div>
-
-                    <div class="category-card">
-                        <i class="fas fa-headphones"></i>
-                        <p>Accessories</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Products Section -->
-        <section class="best-sellers">
-            <div class="best-seller-blur">
-                <h2>Nossos produtos mais vendidos</h2>
-                <div class="products-container">
-                    <form class="product-card" method="GET" action="/adicionar">
-                        <input type="hidden" name="produto" value="acoustic-guitar-pro">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Guitar.jpg"
-                            alt="Acoustic Guitar Pro">
-                        <div class="product-info">
-                            <h3>Acoustic Guitar Pro</h3>
-
-                            <div class="rating">
-                                <span class="stars">★★★★★</span>
-                                <span class="reviews">(124)</span>
-                            </div>
-
-                            <p class="price">$599</p>
-                            <button type="submit" class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add to
-                                Cart</button>
+                        <div class="rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="reviews">(124)</span>
                         </div>
-                    </form>
 
-                    <form class="product-card" method="GET" action="/adicionar">
-                        <input type="hidden" name="produto" value="digital-piano-88">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d8/Yamaha_DGX-620_keyboard.jpg"
-                            alt="Digital Piano 88">
-                        <div class="product-info">
-
-                            <h3>Digital Piano 88</h3>
-                            <div class="rating">
-                                <span class="stars">★★★★★</span>
-                                <span class="reviews">(89)</span>
-                            </div>
-
-                            <p class="price">$1,299</p>
-                            <button type="submit" class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add to
-                                Cart</button>
-                        </div>
-                    </form>
-
-                    <form class="product-card" method="GET" action="/adicionar">
-                        <input type="hidden" name="produto" value="professional-drum-kit">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/8/8f/Drum_kit.jpg"
-                            alt="Professional Drum Kit">
-                        <div class="product-info">
-                            <h3>Professional Drum Kit</h3>
-                            <div class="rating">
-                                <span class="stars">★★★★★</span>
-                                <span class="reviews">(67)</span>
-                            </div>
-                            <p class="price">$899</p>
-                            <button type="submit" class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add to
-                                Cart</button>
-                        </div>
-                    </form>
-
-                    <form class="product-card" method="GET" action="/adicionar">
-                        <input type="hidden" name="produto" value="alto-saxophone">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Saxophone_alto.jpg"
-                            alt="Alto Saxophone">
-                        <div class="product-info">
-                            <h3>Alto Saxophone</h3>
-                            <div class="rating">
-                                <span class="stars">★★★★★</span>
-                                <span class="reviews">(45)</span>
-                            </div>
-                            <p class="price">$1,599</p>
-                            <button type="submit" class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add to
-                                Cart</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </section>
-
-        <!-- Footer Section -->
-        <footer class="footer">
-            <div class="footer-container">
-
-                <div class="footer-column">
-                    <h3>MusicStore</h3>
-                    <p>Your trusted partner for premium musical instruments and accessories.</p>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <p class="price">$599</p>
+                        <button type="submit" class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add to
+                            Cart</button>
                     </div>
-                </div>
+                </form>
 
-                <div class="footer-column">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Store</a></li>
-                        <li><a href="#">Categories</a></li>
-                        <li><a href="#">Cart</a></li>
-                    </ul>
-                </div>
+                <form class="product-card" method="GET" action="/adicionar">
+                    <input type="hidden" name="produto" value="digital-piano-88">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d8/Yamaha_DGX-620_keyboard.jpg"
+                         alt="Digital Piano 88">
+                    <div class="product-info">
 
-                <div class="footer-column">
-                    <h4>Customer Service</h4>
-                    <ul>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">Shipping Info</a></li>
-                        <li><a href="#">Returns</a></li>
-                        <li><a href="#">FAQ</a></li>
-                    </ul>
-                </div>
+                        <h3>Digital Piano 88</h3>
+                        <div class="rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="reviews">(89)</span>
+                        </div>
 
-                <div class="footer-column">
-                    <h4>Contact Info</h4>
-                    <ul class="contact-info">
-                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
-                        <li><i class="fas fa-envelope"></i> info@musicstore.com</li>
-                        <li><i class="fas fa-map-marker-alt"></i> 123 Music Street, NY 10001</li>
-                    </ul>
-                </div>
+                        <p class="price">$1,299</p>
+                        <button type="submit" class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add to
+                            Cart</button>
+                    </div>
+                </form>
+
+                <form class="product-card" method="GET" action="/adicionar">
+                    <input type="hidden" name="produto" value="professional-drum-kit">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/8f/Drum_kit.jpg"
+                         alt="Professional Drum Kit">
+                    <div class="product-info">
+                        <h3>Professional Drum Kit</h3>
+                        <div class="rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="reviews">(67)</span>
+                        </div>
+                        <p class="price">$899</p>
+                        <button type="submit" class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add to
+                            Cart</button>
+                    </div>
+                </form>
+
+                <form class="product-card" method="GET" action="/adicionar">
+                    <input type="hidden" name="produto" value="alto-saxophone">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Saxophone_alto.jpg"
+                         alt="Alto Saxophone">
+                    <div class="product-info">
+                        <h3>Alto Saxophone</h3>
+                        <div class="rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="reviews">(45)</span>
+                        </div>
+                        <p class="price">$1,599</p>
+                        <button type="submit" class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add to
+                            Cart</button>
+                    </div>
+                </form>
             </div>
-            <div class="footer-bottom">
-                <p>© 2024 MusicStore. All rights reserved.</p>
-            </div>
-        </footer>
-    </main>
+        </div>
+    </section>
+</main>
+
+<!-- Footer importado -->
+<div th:replace="fragments/footer :: main-footer"></div>
+
+<!-- Scripts -->
+<script th:src="@{/js/menu-component.js}"></script>
 </body>
 
 </html>
