@@ -63,3 +63,32 @@ header {
 .fas {
     color: white;
 }
+
+/* ===== Responsividade para telas grandes – HEADER ===== */
+header {
+  max-width: 100%;
+  margin: 0 auto;
+  width: 100%;
+}
+
+@media (min-width: 1200px) {
+  header {
+    padding: 0 80px;
+  }
+
+  .img-container h1 {
+    font-size: 2rem;
+  }
+
+  #siteSearch {
+    font-size: 18px;
+  }
+
+  .content-icons a {
+    font-size: 1.1rem;
+  }
+
+  .fas {
+    font-size: 1.3rem;
+  }
+}
