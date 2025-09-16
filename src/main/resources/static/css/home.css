@@ -10,6 +10,12 @@ main {
     width: 100%;
 }
 
+h1,h2,h3, p{
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
 .hero {
     position: relative;
     z-index: 1;
@@ -84,6 +90,7 @@ main {
     height: 120px;
     width: 150px;
     transition: transform 0.3s ease;
+    text-decoration: none;
 }
 
 .category-card:hover {
@@ -176,7 +183,9 @@ main {
 }
 
 .products-container form.product-card button.add-to-cart:hover {
-    background-color: #ffffff;
+    background-color: #000000;
+    color: white;
+    box-shadow: 5px 2px 10px 1px rgba(255, 255, 255, 0.199);
 }
 
 .hero-blur, .category-blur, .best-seller-blur {
