@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Cliente</title>
+    <link rel="stylesheet" th:href="@{/css/edit.css}">
+</head>
+<body>
+<h1>Editar Cliente</h1>
+
+<p class="message-error" th:if="${erro}" th:text="${erro}"></p>
+<p class="message-success" th:if="${sucesso}" th:text="${sucesso}"></p>
+
+<form th:action="@{/adm/clientes/editar/{id}(id=${usuario.id})}" method="post" th:object="${usuario}">
+
+    <input type="hidden" th:field="*{id}"/> <!-- ID escondido, necessário para editar -->
+
+    <label>Nome:</label>
+    <input type="text" th:field="*{nome}" required><br><br>
+
+    <label>Email:</label>
+    <input type="email" th:field="*{email}" required><br><br>
+
+    <label>Perfil:</label>
+    <select th:field="*{perfil}" required>
+        <option th:value="CLIENTE" th:text="'Cliente'"
+                th:selected="${usuario.perfil == 'CLIENTE'}"></option>
+        <option th:value="ADMINISTRADOR" th:text="'Administrador'"
+                th:selected="${usuario.perfil == 'ADMINISTRADOR'}"></option>
+    </select><br><br>
+
+    <label>CPF:</label>
+    <input type="text" th:field="*{cpf}" maxlength="14" placeholder="000.000.000-00" required><br><br>
+
+    <label>Nova Senha (deixe em branco para manter a atual):</label>
+    <input type="password" th:field="*{senha}" placeholder="Digite apenas se quiser alterar"><br><br>
+
+    <button type="submit">Salvar Alterações</button>
+    <a th:href="@{/adm/clientes}">Cancelar</a>
+</form>
+</body>
+</html>

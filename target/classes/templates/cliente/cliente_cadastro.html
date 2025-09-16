@@ -8,10 +8,10 @@
 <body>
 <h1>Cadastro de Usuário</h1>
 
-<p th:if="${erro}" th:text="${erro}" style="color:red"></p>
-<p th:if="${sucesso}" th:text="${sucesso}" style="color:green"></p>
+<p class="message-error" th:if="${erro}" th:text="${erro}"></p>
+<p class="message-success" th:if="${sucesso}" th:text="${sucesso}"></p>
 
-<form th:action="@{cadastro}" method="post" th:object="${cliente}">
+<form th:action="@{cadastro_cliente}" method="post" th:object="${usuario}">
     <label>Nome:</label>
     <input type="text" th:field="*{nome}" required><br><br>
 
