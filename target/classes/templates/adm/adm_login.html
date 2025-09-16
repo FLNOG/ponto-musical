@@ -2,16 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Login de Usuário</title>
+    <title>Login de Administrador</title>
     <link rel="stylesheet" th:href="@{/css/auth.css}">
 </head>
 <body>
-<h1>Cadastro de Usuário</h1>
+<h1>Login de Administrador</h1>
 
-<p th:if="${erro}" th:text="${erro}" style="color:red"></p>
-<p th:if="${sucesso}" th:text="${sucesso}" style="color:green"></p>
+<p class="message-error" th:if="${erro}" th:text="${erro}"></p>
+<p class="message-success" th:if="${sucesso}" th:text="${sucesso}"></p>
 
-<form th:action="@{login}" method="post" th:object="${cliente}">
+<form th:action="@{login_admin}" method="post" th:object="${usuario}">
 
     <label>Email:</label>
     <input type="email" th:field="*{email}" required><br><br>

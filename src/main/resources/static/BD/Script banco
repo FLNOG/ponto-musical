@@ -1,0 +1,21 @@
+create database ponto_musical;
+use ponto_musical;
+
+CREATE TABLE usuario (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    senha VARCHAR(100) NOT NULL,
+    cpf VARCHAR(11) NOT NULL,
+    ativo BOOLEAN NOT NULL,
+    perfil ENUM('CLIENTE', 'ADMINISTRADOR') NOT NULL
+);
+
+INSERT INTO usuario (nome, email, senha, cpf, perfil)
+VALUES (
+    'Felipe',
+    'f@fe',
+    'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3',
+    '47272711841',
+    'ADMINISTRADOR'
+);
