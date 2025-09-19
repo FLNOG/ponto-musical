@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,7 @@
 
     <link rel="stylesheet" href="/css/header.css" />
     <link rel="stylesheet" href="/css/footer.css" />
-
+    <link rel="stylesheet" href="/css/sobre.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,13 +17,17 @@
         rel="stylesheet">
 </head>
 </head>
-    <body>
-        <div th:replace="fragments/header :: main-header"></div>
-            <main>
 
-            </main>
-        <div th:replace="fragments/footer :: main-footer"></div>
-        <!-- Scripts -->
-        <script th:src="@{/js/menu-component.js}"></script>
-    </body>
+<body>
+    <div th:replace="fragments/header :: main-header"></div>
+    <h1>teste</h1>
+    <main>
+
+    </main>
+    <div th:replace="fragments/footer :: main-footer"></div>
+
+    <!-- Scripts -->
+    <script th:src="@{/js/menu-component.js}"></script>
+</body>
+
 </html>
