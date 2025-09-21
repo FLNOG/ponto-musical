@@ -6,11 +6,74 @@
 main{
     display: flex;
 
-    height: 100vh;
+    height: auto;
     width: 100%; 
 
     justify-content: center;
     flex-direction: column;
 
     align-items: center;
+}
+
+.s2{
+    height: 400px;
+    width: 100%;
+}
+
+.s1{
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    height: 600px;
+    width: 100%;
+
+    background-image: url("https://images2.alphacoders.com/539/539866.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+h1{
+    color: white;
+    font-size: 40px;
+}
+
+.s1 p{
+    width: 50%;
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.s2{
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    height: 450px;
+    width: 100%;
+
+    background-color: #F6F6F6;
+}
+
+.s2 div p{
+    color: black;
+}
+
+.text-cont{
+    display: flex;
+    height: auto;
+    width: 50%;
+
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+img{
+    height: 450px;
 }
