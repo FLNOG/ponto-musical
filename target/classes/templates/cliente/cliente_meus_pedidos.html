@@ -1,35 +1,35 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
 <head>
     <meta charset="UTF-8">
-    <title>Pedidos</title>
-    <link rel="stylesheet" th:href="@{/css/auth.css}">
+    <title>Meus Pedidos</title>
+    <link rel="stylesheet" href="../../static/css/cliente_meus_pedidos.css">
 </head>
-<h2>Olá, <span th:text="${cliente.nome}"></span>!</h2>
-<div>
-    <a href="../cliente/cliente_minha_conta.html"><button type="button">Meus Dados</button></a>
-    <a href="../cliente/cliente_meus_pedidos.html"><button type="button">Meus Pedidos</button></a>
-    <a href="../cliente/cliente_endereco.html"><button type="button">Endereço</button></a>
-    <a href=""><button type="button">Sair</button></a>
-
-</div>
-
 <body>
-    <div id="pedidos">
-        <h3>Meus Pedidos</h3>
+    <div class="container">
+        <!-- Menu lateral -->
+        <nav class="menu-lateral">
+            <h2>Olá, <span th:text="${cliente.nome}"></span>!</h2>
+            <ul>
+                <li><a href="../cliente/cliente_minha_conta.html">Meus Dados</a></li>
+                <li><a href="../cliente/cliente_meus_pedidos.html">Meus Pedidos</a></li>
+                <li><a href="../cliente/cliente_endereco.html">Endereço</a></li>
+                <li><a href="#">Sair</a></li>
+            </ul>
+        </nav>
 
-        <div th:each="pedido : ${pedidos}">
-            <p><strong>Pedido </strong><span th:text="${pedido.numero}"></span></p>
-            <p>Status: <span th:text="${pedido.status}"></span></p>
-            <p>Data: <span th:text="${pedido.data}"></span></p>
-            <p>Produto: <span th:text="${pedido.produto}"></span></p>
-            <p>Quantidade: <span th:text="${pedido.quantidade}"></span></p>
-            <p>Valor: R$ <span th:text="${pedido.valor}"></span></p>
-        
-        </div>
+        <main class="content">
+            <h1>Meus Pedidos</h1>
+
+            <div th:each="pedido : ${pedidos}" class="pedido-card">
+                <p><strong>Pedido:</strong> <span th:text="${pedido.numero}"></span></p>
+                <p><strong>Status:</strong> <span th:text="${pedido.status}"></span></p>
+                <p><strong>Data:</strong> <span th:text="${pedido.data}"></span></p>
+                <p><strong>Produto:</strong> <span th:text="${pedido.produto}"></span></p>
+                <p><strong>Quantidade:</strong> <span th:text="${pedido.quantidade}"></span></p>
+                <p><strong>Valor:</strong> R$ <span th:text="${pedido.valor}"></span></p>
+            </div>
+        </main>
     </div>
-
 </body>
-
 </html>

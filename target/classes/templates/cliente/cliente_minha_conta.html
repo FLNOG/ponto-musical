@@ -4,48 +4,53 @@
 <head>
     <meta charset="UTF-8">
     <title>Minha Conta</title>
-    <link rel="stylesheet" th:href="@{/css/auth.css}">
+    <link rel="stylesheet" href="../../static/css/cliente_minha_conta.css">
 </head>
- <h2>Olá, <span th:text="${cliente.nome}"></span>!</h2>
-  <div>
-    <a href="../cliente/cliente_minha_conta.html"><button type="button">Meus Dados</button></a>
-    <a href="../cliente/cliente_meus_pedidos.html"><button type="button">Meus Pedidos</button></a>
-    <a href="../cliente/cliente_endereco.html"><button type="button">Endereço</button></a>
-    <a href=""><button type="button">Sair</button></a>
-
-
-    </div>
 
 <body>
-    <h1>Dados Pessoais</h1>
+    
+    <div class="container">
+   
+        <!-- Menu lateral -->
+        <nav class="menu-lateral">
+            <h2>Olá, <span th:text="${cliente.nome}"></span>!</h2>
+            <ul>
+                <li><a href="../cliente/cliente_minha_conta.html">Meus Dados</a></li>
+                <li><a href="../cliente/cliente_meus_pedidos.html">Meus Pedidos</a></li>
+                <li><a href="../cliente/cliente_endereco.html">Endereço</a></li>
+                <li><a href="#">Sair</a></li>
+            </ul>
+        </nav>
 
-    <p th:if="${erro}" th:text="${erro}" style="color:red"></p>
-    <p th:if="${sucesso}" th:text="${sucesso}" style="color:green"></p>
+        <main class="content">
+            <h1>Dados Pessoais</h1>
 
- <form th:action="@{cadastro}" method="post" th:object="${cliente}">
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" th:field="*{nome}" readonly>
-        <br><br>
+            <p th:if="${erro}" th:text="${erro}" ></p>
+            <p th:if="${sucesso}" th:text="${sucesso}" ></p>
 
-        <label for="cpf">CPF:</label>
-        <input type="text" id="cpf" th:field="*{cpf}" readonly>
-        <br><br>
+            <form th:action="@{cadastro}" method="post" th:object="${cliente}">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" th:field="*{nome}" readonly>
 
-        <label for="email">Email:</label>
-        <input type="text" id="email" th:field="*{email}" readonly>
-        <br><br>
+                <label for="cpf">CPF:</label>
+                <input type="text" id="cpf" th:field="*{cpf}" readonly>
 
-        <label for="telefone">Telefone:</label>
-        <input type="text" id="telefone" th:field="*{telefone}" readonly>
-        <br><br>
+                <label for="email">Email:</label>
+                <input type="text" id="email" th:field="*{email}" readonly>
 
-        <label for="dataNascimento">Data de Nascimento:</label>
-        <input type="text" id="dataNascimento" th:field="*{dataNascimento}" readonly>
-        <br><br>
+                <label for="telefone">Telefone:</label>
+                <input type="text" id="telefone" th:field="*{telefone}" readonly>
 
-        <button type="button" id="editarBtn" onclick="ativarEdicao()">Editar</button>
-        <button type="submit" id="salvarBtn" style="display:none;">Salvar Alterações</button>
-    </form>
+                <label for="dataNascimento">Data de Nascimento:</label>
+                <input type="text" id="dataNascimento" th:field="*{dataNascimento}" readonly>
+
+                <div class="buttons">
+                    <button type="button" id="editarBtn" onclick="ativarEdicao()">Editar</button>
+                    <button type="submit" id="salvarBtn">Salvar Alterações</button>
+                </div>
+            </form>
+        </main>
+    </div>
 
     <script>
         function ativarEdicao() {
