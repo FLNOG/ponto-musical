@@ -1,0 +1,113 @@
+/* Reset básico */
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.cart-hero {
+    height: 250px;
+    background-image: url("https://thumbs.dreamstime.com/b/musical-instruments-background-wallpaper-abstract-music-hd-banner-292193248.jpg");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart-hero-blur {
+    height: 100%;
+    width: 100%;
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart-hero h1 {
+    color: white;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.cart-content {
+    width: 80%;
+    margin: 40px auto;
+}
+
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.cart-table tr {
+    border-bottom: 1px solid #ddd;
+}
+
+.cart-table td {
+    padding: 18px;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.cart-table tr:hover {
+    background-color: rgba(240, 140, 0, 0.1);
+}
+
+
+.remove-btn {
+    background-color: #f08c00;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.remove-btn:hover {
+    background-color: #000;
+    color: #fff;
+    transform: scale(1.05);
+}
+
+/* Linha do total */
+.total-row {
+    background-color:#f08c00;
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+
+.checkout {
+    margin-top: 25px;
+    text-align: center;
+}
+
+.checkout-btn {
+    background-color: #f08c00;
+    color: white;
+    border: none;
+    padding: 14px 30px;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: .3s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.checkout-btn:hover {
+    background-color: #000;
+    transform: scale(1.05);
+}
