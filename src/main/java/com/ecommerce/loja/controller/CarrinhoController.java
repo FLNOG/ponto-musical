@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class CarrinhoController {
 
     @GetMapping("/carrinho")
-    public String carrinho() {
+    public String Carrinho() {
         return "carrinho/carrinho";
     }
 }
