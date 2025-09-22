@@ -7,6 +7,6 @@ public class CarrinhoController {
 
     @GetMapping("/carrinho")
     public String carrinho() {
-        return "Carrinho/carrinho";
+        return "carrinho/carrinho";
     }
 }
