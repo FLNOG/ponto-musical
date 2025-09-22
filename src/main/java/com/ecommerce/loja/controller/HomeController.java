@@ -11,4 +11,9 @@ public class HomeController {
     public String home(){
         return "home";
     }
+
+    @GetMapping("/sobre")
+    public String sobre(){
+        return "includes/sobre";
+    }
 }
