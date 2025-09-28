@@ -2,12 +2,24 @@
 <html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Relatório de Vendas</title>
-    <link rel="stylesheet" th:href="@{/css/list.css}">
+    <title>Relatório de vendas</title>
+    <link rel="stylesheet" th:href="@{/css/relatorio.css}">
 </head>
 <body>
 
-<h1>Relatório de Vendas</h1>
+<h1>Relatório de vendas</h1>
+
+<form method="get" th:action="@{/relatorio/vendas}">
+    <label for="dataInicio">Data de:</label>
+    <input type="date" id="dataInicio" name="dataInicio">
+
+    <label for="dataFim">Até:</label>
+    <input type="date" id="dataFim" name="dataFim">
+
+    <button type="submit">Pesquisar</button>
+</form>
+
+<br>
 
 <table>
     <thead>
@@ -16,8 +28,8 @@
         <th>Data</th>
         <th>Cliente</th>
         <th>Produto</th>
-        <th>Quantidade</th>
-        <th>Valor Total</th>
+        <th>Qtd.</th>
+        <th>Vl. Total</th>
     </tr>
     </thead>
     <tbody>

@@ -24,6 +24,16 @@ public class AdminController {
         return "adm/adm_dashboard";
     }
 
+    @GetMapping("/adm_relatorio_produtos")
+    public String relatorioProdutos() {
+        return "adm/adm_relatorio_produtos";
+    }
+
+    @GetMapping("/adm_relatorio_vendas")
+    public String relatorioVendas() {
+        return "adm/adm_relatorio_vendas";
+    }
+
     @GetMapping("/adm/clientes")
     public String listarUsuarios(Model model) {
         List<Usuario> usuarios = usuarioService.findAll();
