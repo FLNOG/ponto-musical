@@ -98,4 +98,37 @@ public class AdminController {
             return "adm/adm_login";
         }
     }
+
+    // FORMULÁRIO DE NOVO CLIENTE
+    @GetMapping("/adm/clientes/novo")
+    public String novoCliente(Model model) {
+        model.addAttribute("usuario", new Usuario());
+        return "adm/adm_form_cliente";
+    }
+
+    // SALVAR NOVO CLIENTE
+    @PostMapping("/adm/clientes/novo")
+    public String salvarCliente(@ModelAttribute("usuario") Usuario usuario, Model model) {
+        try {
+            usuario.setPerfil(Usuario.Perfil.CLIENTE);
+            usuarioService.cadastro(usuario);
+            return "redirect:/adm/clientes";
+        } catch (Exception e) {
+            model.addAttribute("erro", e.getMessage());
+            return "adm/adm_form_cliente";
+        }
+    }
+
+    // EXCLUIR CLIENTE
+    @GetMapping("/adm/clientes/excluir/{id}")
+    public String excluirCliente(@PathVariable int id) {
+        try {
+            Usuario usuario = usuarioService.findById(id);
+            usuarioService.delete(usuario);
+        } catch (Exception e) {
+            System.out.println("Erro ao excluir cliente: " + e.getMessage());
+        }
+        return "redirect:/adm/clientes";
+    }
+
 }
