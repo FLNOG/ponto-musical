@@ -11,8 +11,14 @@ header {
 
 .img-container {
     display: flex;
-    height: auto;
+    height: 90px;
     width: 20%;
+
+    background-image: url("../img/logo.png");
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 60%;
 }
 
 .img-container > img {
