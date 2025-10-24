@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Produto</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.0.0/css/bootstrap.min.css}">
+</head>
+<body>
+<div class="container mt-4">
+    <h2 th:text="${produto.id == null} ? 'Novo Produto' : 'Editar Produto'"></h2>
+
+    <form th:action="@{/admin/produtos/salvar}" th:object="${produto}" method="post">
+        <input type="hidden" th:field="*{id}"/>
+        <div class="mb-3">
+            <label>Nome</label>
+            <input type="text" th:field="*{nome}" class="form-control">
+            <div class="text-danger" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></div>
+        </div>
+
+        <div class="mb-3">
+            <label>Preço</label>
+            <input type="number" step="0.01" th:field="*{preco}" class="form-control">
+            <div class="text-danger" th:if="${#fields.hasErrors('preco')}" th:errors="*{preco}"></div>
+        </div>
+
+        <div class="mb-3">
+            <label>Estoque</label>
+            <input type="number" th:field="*{estoque}" class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label>Descrição</label>
+            <textarea th:field="*{descricao}" class="form-control"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label>Imagem (URL)</label>
+            <input type="text" th:field="*{imagem}" class="form-control">
+        </div>
+
+        <button type="submit" class="btn btn-success">Salvar</button>
+        <a href="/admin/produtos" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+<script th:src="@{/webjars/bootstrap/5.0.0/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

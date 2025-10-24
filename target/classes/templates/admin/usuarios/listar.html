@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - Usuários</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.0.0/css/bootstrap.min.css}">
+</head>
+<body>
+<div class="container mt-4">
+    <h2>Gerenciar Usuários</h2>
+
+    <a href="/admin/usuarios/novo" class="btn btn-primary mb-3">+ Novo Usuário</a>
+
+    <div th:if="${sucesso}" class="alert alert-success" th:text="${sucesso}"></div>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>CPF</th> <!-- Novo campo -->
+            <th>Email</th>
+            <th>Tipo</th>
+            <th>Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="u : ${usuarios}">
+            <td th:text="${u.id}"></td>
+            <td th:text="${u.nome}"></td>
+            <td th:text="${u.cpf}"></td> <!-- Novo campo -->
+            <td th:text="${u.email}"></td>
+            <td th:text="${u.tipo.descricao}"></td>
+            <td>
+                <a th:href="@{'/admin/usuarios/editar/' + ${u.id}}" class="btn btn-warning btn-sm">Editar</a>
+                <a th:href="@{'/admin/usuarios/deletar/' + ${u.id}}" class="btn btn-danger btn-sm"
+                   onclick="return confirm('Deseja realmente deletar este usuário?')">Excluir</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script th:src="@{/webjars/bootstrap/5.0.0/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

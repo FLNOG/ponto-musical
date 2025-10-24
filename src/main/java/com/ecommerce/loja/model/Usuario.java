@@ -1,52 +1,82 @@
 package com.ecommerce.loja.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 
-@SuppressWarnings("all")
 @Entity
-@Table(name = "usuario")
 public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
-    @Column(nullable = false, length = 100)
-    private String nome;
+    @NotBlank(message = "O nome é obrigatório")
+    @Column(nullable = false)
+    private String nome; // Novo campo
 
-    @Column(nullable = false, length = 100)
+    @Email(message = "E-mail inválido")
+    @NotBlank(message = "O e-mail é obrigatório")
+    @Column(unique = true, nullable = false)
     private String email;
 
-    @Column(nullable = false, length = 100)
+    @NotBlank(message = "A senha é obrigatória")
+    @Column(nullable = false)
     private String senha;
 
-    @Column(nullable = false, length = 11)
+    @NotBlank(message = "O CPF é obrigatório")
+    @Column(unique = true, nullable = false)
     private String cpf;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private Perfil perfil;
+    private TipoUsuario tipo;
 
-    public enum Perfil {
-        CLIENTE,
-        ADMINISTRADOR
+    public Integer getId() {
+        return id;
     }
 
-    @Transient
-    private String confirmarSenha;
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
-    public String getNome() { return nome; }
-    public void setNome(String nome) { this.nome = nome; }
-    public String getEmail() { return email; }
-    public void setEmail(String email) { this.email = email; }
-    public String getSenha() { return senha; }
-    public void setSenha(String senha) { this.senha = senha; }
-    public String getConfirmarSenha() { return confirmarSenha; }
-    public String getCpf() { return cpf; }
-    public void setCpf(String cpf) { this.cpf = cpf; }
-    public void setConfirmarSenha(String confirmarSenha) { this.confirmarSenha = confirmarSenha; }
-    public Perfil getPerfil() { return perfil; }
-    public void setPerfil(Perfil perfil) { this.perfil = perfil; }
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public TipoUsuario getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoUsuario tipo) {
+        this.tipo = tipo;
+    }
+
 }

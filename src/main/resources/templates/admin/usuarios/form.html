@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Usuário</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.0.0/css/bootstrap.min.css}">
+</head>
+<body>
+<div class="container mt-4">
+    <h2 th:text="${usuario.id == null} ? 'Novo Usuário' : 'Editar Usuário'"></h2>
+
+    <form th:action="@{/admin/usuarios/salvar}" th:object="${usuario}" method="post">
+        <input type="hidden" th:field="*{id}"/>
+        <div class="mb-3">
+            <label>Nome</label>
+            <input type="text" th:field="*{nome}" class="form-control">
+            <div class="text-danger" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></div>
+        </div>
+
+        <div class="mb-3">
+            <label>CPF</label>
+            <input type="text" th:field="*{cpf}" class="form-control">
+            <div class="text-danger" th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}"></div>
+        </div>
+
+        <div class="mb-3">
+            <label>Email</label>
+            <input type="email" th:field="*{email}" class="form-control">
+            <div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+        </div>
+
+        <div class="mb-3">
+            <label>Senha</label>
+            <input type="password" th:field="*{senha}" class="form-control">
+            <div class="text-danger" th:if="${#fields.hasErrors('senha')}" th:errors="*{senha}"></div>
+        </div>
+
+        <div class="mb-3">
+            <label>Tipo de Usuário</label>
+            <select th:field="*{tipo}" class="form-select">
+                <option th:each="tipo : ${T(com.ecommerce.loja.model.TipoUsuario).values()}"
+                        th:value="${tipo}" th:text="${tipo}"></option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-success">Salvar</button>
+        <a href="/admin/usuarios" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+<script th:src="@{/webjars/bootstrap/5.0.0/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

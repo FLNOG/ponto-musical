@@ -1,0 +1,34 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Painel Administrativo</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .dashboard {
+            margin-top: 5vh;
+        }
+    </style>
+</head>
+<body>
+<div class="container dashboard">
+    <div class="card shadow-lg">
+        <div class="card-body">
+            <h2 class="card-title text-center mb-4">Painel Administrativo</h2>
+
+            <div class="d-grid gap-3 col-6 mx-auto">
+                <a th:href="@{/admin/produtos}" class="btn btn-primary btn-lg">Gerenciar Produtos</a>
+                <a th:href="@{/admin/usuarios}" class="btn btn-secondary btn-lg">Gerenciar Usuários</a>
+                <a th:href="@{/}" class="btn btn-outline-dark btn-lg">Voltar para Home</a>
+                <a th:href="@{/logout}" class="btn btn-danger btn-lg">Sair</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
