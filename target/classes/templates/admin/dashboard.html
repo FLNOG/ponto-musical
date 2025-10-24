@@ -14,16 +14,14 @@
     </style>
 </head>
 <body>
+<div th:replace="fragments/admin-navbar :: admin-navbar"></div>
 <div class="container dashboard">
     <div class="card shadow-lg">
         <div class="card-body">
             <h2 class="card-title text-center mb-4">Painel Administrativo</h2>
-
             <div class="d-grid gap-3 col-6 mx-auto">
                 <a th:href="@{/admin/produtos}" class="btn btn-primary btn-lg">Gerenciar Produtos</a>
                 <a th:href="@{/admin/usuarios}" class="btn btn-secondary btn-lg">Gerenciar Usuários</a>
-                <a th:href="@{/}" class="btn btn-outline-dark btn-lg">Voltar para Home</a>
-                <a th:href="@{/logout}" class="btn btn-danger btn-lg">Sair</a>
             </div>
         </div>
     </div>

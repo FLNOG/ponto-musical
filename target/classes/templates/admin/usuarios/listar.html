@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin - Usuários</title>
-    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.0.0/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
 </head>
 <body>
+<div th:replace="fragments/admin-navbar :: admin-navbar"></div>
 <div class="container mt-4">
     <h2>Gerenciar Usuários</h2>
 
@@ -18,7 +19,7 @@
         <tr>
             <th>ID</th>
             <th>Nome</th>
-            <th>CPF</th> <!-- Novo campo -->
+            <th>CPF</th>
             <th>Email</th>
             <th>Tipo</th>
             <th>Ações</th>
@@ -28,7 +29,7 @@
         <tr th:each="u : ${usuarios}">
             <td th:text="${u.id}"></td>
             <td th:text="${u.nome}"></td>
-            <td th:text="${u.cpf}"></td> <!-- Novo campo -->
+            <td th:text="${u.cpf}"></td>
             <td th:text="${u.email}"></td>
             <td th:text="${u.tipo.descricao}"></td>
             <td>

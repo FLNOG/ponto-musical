@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Meu Carrinho - Ponto Musical</title>
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/header.css" />
+    <link rel="stylesheet" href="/css/footer.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+<link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+
+<!-- Header importado
+<div th:replace="fragments/header :: main-header"></div> -->
+
+<main>
+    <section class="carrinho-section">
+        <h2>Meu Carrinho</h2>
+
+        <!-- Quando o carrinho estiver vazio -->
+        <div th:if="${carrinho == null or #lists.isEmpty(carrinho)}">
+            <p>Seu carrinho está vazio.</p>
+            <a href="/" class="btn">Continuar comprando</a>
+        </div>
+
+        <!-- Lista de produtos no carrinho -->
+        <div th:if="${carrinho != null and !#lists.isEmpty(carrinho)}">
+            <table>
+                <thead>
+                <tr>
+                    <th>Produto</th>
+                    <th>Preço</th>
+                    <th>Quantidade</th>
+                    <th>Subtotal</th>
+                    <th>Ações</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="produto, iterStat : ${carrinho}">
+                    <td th:text="${produto.nome}"></td>
+                    <td th:text="${produto.preco} + ' $'"></td>
+                    <td>1</td>
+                    <td th:text="${produto.preco} + ' $'"></td>
+                    <td>
+                        <form th:action="@{/carrinho/remover}" method="post">
+                            <input type="hidden" name="produtoId" th:value="${produto.id}">
+                            <button type="submit" class="btn btn-danger">
+                                <i class="fas fa-trash"></i> Remover
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div class="carrinho-actions">
+                <a href="/" class="btn">Continuar comprando</a>
+                <button class="btn btn-primary">Finalizar Compra</button>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Footer importado
+<div th:replace="fragments/footer :: main-footer"></div> -->
+<script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

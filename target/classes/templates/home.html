@@ -12,88 +12,89 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Inline:opsz,wght@10..72,100..900&family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
-        rel="stylesheet">
+            href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Inline:opsz,wght@10..72,100..900&family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
+            rel="stylesheet">
 </head>
-    
+
 <body>
 
-    <!-- Header importado -->
-    <div th:replace="fragments/header :: main-header"></div>
+<!-- Header importado -->
+<div th:replace="fragments/header :: main-header"></div>
 
-    <main>
-        <section class="hero">
-            <div class="hero-blur">
-                <div class="hero-content">
-                    <h1>Encontre seu instrumento favorito!</h1>
-                    <p>Descubra o mundo da música por um preço acessivel</p>
-                    <button class="shop-now">Compre agora</button>
+<main>
+    <section class="hero">
+        <div class="hero-blur">
+            <div class="hero-content">
+                <h1>Encontre seu instrumento favorito!</h1>
+                <p>Descubra o mundo da música por um preço acessível</p>
+                <button class="shop-now">Compre agora</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories">
+        <div class="category-blur">
+            <h2>Categorias</h2>
+            <div class="category-container">
+
+                <a href="/teste" class="category-card">
+                    <i class="fas fa-guitar"></i>
+                    <p>Strings</p>
+                </a>
+
+                <a href="/teste" class="category-card">
+                    <i class="fas fa-drum"></i>
+                    <p>Percussion</p>
+                </a>
+
+                <a href="/teste" class="category-card">
+                    <i class="fas fa-music"></i>
+                    <p>Winds</p>
+                </a>
+
+                <a href="/teste" class="category-card">
+                    <i class="fas fa-keyboard"></i>
+                    <p>Keyboards</p>
+                </a>
+
+                <a href="/teste" class="category-card">
+                    <i class="fas fa-headphones"></i>
+                    <p>Accessories</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="best-sellers">
+        <div class="best-seller-blur">
+            <h2>Nossos produtos mais vendidos</h2>
+            <div class="products-container">
+                <div class="products-container" th:each="produto : ${produtos}">
+                    <form class="product-card" method="post" th:action="@{/carrinho/adicionar}">
+                        <!-- Envia o ID do produto -->
+                        <input type="hidden" name="produtoId" th:value="${produto.id}" />
+                        <img th:src="${produto.imagem}" th:alt="${produto.nome}" />
+                        <div class="product-info">
+                            <h3 th:text="${produto.nome}"></h3>
+                            <p class="price" th:text="${produto.preco} + ' $'"></p>
+                            <button type="submit" class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
+</main>
 
-        <!-- Categories Section -->
-        <section class="categories">
-            <div class="category-blur">
-                <h2>Categorias</h2>
-                <div class="category-container">
+<!-- Footer importado -->
+<div th:replace="fragments/footer :: main-footer"></div>
 
-                    <a href="/teste" class="category-card">
-                        <i class="fas fa-guitar"></i>
-                        <p>Strings</p>
-                    </a>
-
-                    <a href="/teste" class="category-card">
-                        <i class="fas fa-drum"></i>
-                        <p>Percussion</p>
-                    </a>
-
-                    <a href="/teste" class="category-card">
-                        <i class="fas fa-music"></i>
-                        <p>Winds</p>
-                    </a>
-
-                    <a href="/teste" class="category-card">
-                        <i class="fas fa-keyboard"></i>
-                        <p>Keyboards</p>
-                    </a>
-
-                    <a href="/teste" class="category-card">
-                        <i class="fas fa-headphones"></i>
-                        <p>Accessories</p>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Products Section -->
-        <section class="best-sellers">
-            <div class="best-seller-blur">
-                <h2>Nossos produtos mais vendidos</h2>
-                <div class="products-container">
-                    <div class="products-container">
-                        <form class="product-card" th:each="produto : ${produtos}" method="GET" th:action="@{/adicionar}">
-                            <input type="hidden" name="produto" th:value="${produto.nome}">
-                            <img th:src="${produto.imagem}" th:alt="${produto.nome}">
-                            <div class="product-info">
-                                <h3 th:text="${produto.nome}"></h3>
-                                <p class="price" th:text="${produto.preco} + ' $'"></p>
-                                <button type="submit" class="add-to-cart">
-                                    <i class="fas fa-shopping-cart"></i> Add to Cart
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer importado -->
-    <div th:replace="fragments/footer :: main-footer"></div>
-
-    <!-- Scripts -->
-    <script th:src="@{/js/menu-component.js}"></script>
+<!-- Scripts -->
+<script th:src="@{/js/menu-component.js}"></script>
 </body>
 
 </html>
