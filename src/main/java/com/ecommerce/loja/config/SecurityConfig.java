@@ -1,75 +1,57 @@
 package com.ecommerce.loja.config;
 
+import com.ecommerce.loja.security.CustomUserDetailsService;
+import com.ecommerce.loja.security.CustomLoginSuccessHandler;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 
 @Configuration
-@EnableWebSecurity
 public class SecurityConfig {
 
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http
+    @Autowired
+    private CustomUserDetailsService userDetailsService;
 
-                .authorizeHttpRequests(auth -> auth
-                        // 1. Permite acesso a recursos estáticos (CSS, JS, Imagens, etc.)
-                        .requestMatchers("/css/**", "/js/**", "/images/**", "/login/**", "/webjars/**").permitAll()
-
-                        // 2. REQUER AUTENTICAÇÃO para qualquer rota que comece com /admin/**
-                        .requestMatchers("/admin/**").permitAll()
-
-                        // 3. Todas as outras rotas (incluindo /, /login, /home) são permitidas (públicas)
-                        .anyRequest().permitAll()
-                )
-                .formLogin(form -> form
-                        .loginPage("/login")               // URL para exibir o formulário de login customizado
-                        .failureUrl("/login?error")        // URL em caso de falha no login
-                        // Redireciona para a home após login (Se não houver URL de origem armazenada)
-                        .defaultSuccessUrl("/admin", true)
-                        .permitAll()
-                )
-                .logout(logout -> logout
-                        .logoutUrl("/logout")              // URL que o formulário de logout fará POST
-                        .logoutSuccessUrl("/login?logout") // Redireciona após logout bem-sucedido
-                )
-                // Desativa CSRF para simplificar o desenvolvimento. Mantenha em produção se usar formulários.
-                .csrf(AbstractHttpConfigurer::disable)
-
-                // Habilita a renderização de wireframe (necessário para o H2DB)
-                .headers(headers -> headers
-                        .frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin)
-                );
-
-        return http.build();
-    }
+    @Autowired
+    private CustomLoginSuccessHandler customLoginSuccessHandler;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        // Usa BCrypt, que é o padrão seguro para hashear senhas.
         return new BCryptPasswordEncoder();
     }
 
     @Bean
-    public org.springframework.security.core.userdetails.UserDetailsService users(PasswordEncoder passwordEncoder) {
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
+        return config.getAuthenticationManager();
+    }
 
-        // Detalhes do usuário de teste
-        org.springframework.security.core.userdetails.UserDetails user =
-                org.springframework.security.core.userdetails.User.builder()
-                        .username("admin")
-                        // A senha 'admin' será codificada pelo BCryptPasswordEncoder
-                        .password(passwordEncoder.encode("admin"))
-                        .roles("USER", "ADMIN") // Roles para uso futuro em autorização
-                        .build();
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+                .csrf(csrf -> csrf.disable())
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/carrinho/**", "/home", "/").hasAnyRole("CLIENTE", "ADMIN")
+                        .requestMatchers("/login", "/css/**", "/js/**", "/images/**", "/clientes/**", "/", "/home").permitAll()
+                        .anyRequest().authenticated()
+                )
+                .formLogin(form -> form
+                        .loginPage("/login")
+                        .successHandler(customLoginSuccessHandler)
+                        .permitAll()
+                )
+                .logout(logout -> logout
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/")
+                        .permitAll()
+                );
 
-        // Gerenciador em memória (apenas para testes)
-        return new org.springframework.security.provisioning.InMemoryUserDetailsManager(user);
-
+        return http.build();
     }
 }

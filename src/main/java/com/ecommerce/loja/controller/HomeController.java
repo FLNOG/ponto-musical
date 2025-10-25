@@ -19,6 +19,6 @@ public class HomeController {
     public String home(Model model) {
         List<Produto> produtos = produtoService.listarTodos();
         model.addAttribute("produtos", produtos);
-        return "home"; // templates/home.html
+        return "home";
     }
 }

@@ -4,6 +4,7 @@ com\ecommerce\loja\controller\AdminController.class
 com\ecommerce\loja\repository\ProdutoRepository.class
 com\ecommerce\loja\controller\HomeController.class
 com\ecommerce\loja\controller\LoginController.class
+com\ecommerce\loja\controller\CarrinhoController.class
 com\ecommerce\loja\service\strategy\DescontoFixo.class
 com\ecommerce\loja\config\SecurityConfig.class
 com\ecommerce\loja\service\strategy\CalculadoraPreco.class

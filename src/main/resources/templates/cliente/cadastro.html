@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cadastro - Loja</title>
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0d6efd 0%, #6c63ff 100%);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-card {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 420px;
+            padding: 2rem;
+        }
+
+        .form-control:focus {
+            border-color: #0d6efd;
+            box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+        }
+
+        .btn-primary {
+            background-color: #0d6efd;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #0b5ed7;
+        }
+
+        .brand {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .brand h2 {
+            font-weight: 700;
+            color: #0d6efd;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-card">
+    <div class="brand">
+        <h2>🎸 Loja de Instrumentos</h2>
+        <p class="text-muted">Cadastre sua conta</p>
+    </div>
+
+    <form th:action="@{/clientes/cadastrar}" th:object="${usuario}" method="post">
+        <div class="mb-3">
+            <label for="nome" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="nome" th:field="*{nome}" placeholder="Digite seu nome" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="email" class="form-label">E-mail</label>
+            <input type="email" class="form-control" id="email" th:field="*{email}" placeholder="Digite seu e-mail" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="cpf" class="form-label">CPF</label>
+            <input type="text" class="form-control" id="cpf" th:field="*{cpf}" placeholder="Digite seu CPF" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="senha" class="form-label">Senha</label>
+            <input type="password" class="form-control" id="senha" th:field="*{senha}" placeholder="Digite sua senha" required>
+        </div>
+
+        <div th:if="${erro}" class="alert alert-danger text-center" role="alert">
+            <p th:text="${erro}"></p>
+        </div>
+
+        <div class="d-grid gap-2 mt-3">
+            <button type="submit" class="btn btn-primary btn-lg">Cadastrar</button>
+        </div>
+    </form>
+
+    <div class="text-center text-muted mt-4">
+        <small>Já possui cadastro? <a th:href="@{/login}">Faça login</a></small>
+    </div>
+
+    <div class="text-center text-muted mt-2">
+        <small>&copy; 2025 Loja de Instrumentos</small>
+    </div>
+</div>
+
+<script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

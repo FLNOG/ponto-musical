@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Meu Perfil</title>
+    <link rel="stylesheet" href="/css/style.css"> <!-- seu CSS -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<h1>Meu Perfil</h1>
+
+<div class="perfil-container">
+    <p><strong>Nome:</strong> <span th:text="${usuario.nome}">Nome do usuário</span></p>
+    <p><strong>Email:</strong> <span th:text="${usuario.email}">email@exemplo.com</span></p>
+
+    <a th:href="@{/perfil/editar}" class="btn">Editar Perfil</a>
+</div>
+</body>
+</html>
