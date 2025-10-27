@@ -15,7 +15,7 @@
 
         <!-- Usuário logado -->
         <span th:if="${#authentication != null and #authentication.authenticated}">
-        <a th:href="@{/perfil}" title="Meu perfil">
+        <a th:href="@{/perfil}" title="Meu perfil"> <!-- adicionar rota -->
             <i class="fas fa-user"></i>
             <!-- <span th:text="${#authentication.principal.nome}"></span>  nome real do usuário -->
         </a>
