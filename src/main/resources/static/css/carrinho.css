@@ -1,0 +1,132 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+h1, h2, h3, p, td, th {
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+.cart-page {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+
+.cart-hero {
+    position: relative;
+    height: 400px;
+    margin-top: -80px;
+    background-image: url("https://thumbs.dreamstime.com/b/musical-instruments-background-wallpaper-abstract-music-hd-banner-292193248.jpg");
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+}
+
+.cart-hero-blur {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    backdrop-filter: blur(5px);
+}
+
+.cart-hero-blur h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+/* ==== TABELA DO CARRINHO ==== */
+.cart-content {
+    width: 80%;
+    margin: 40px auto;
+}
+
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.cart-table tr {
+    border-bottom: 1px solid #ddd;
+}
+
+.cart-table tr:last-child {
+    border-bottom: none;
+}
+
+.cart-table th,
+.cart-table td {
+    padding: 15px 20px;
+    text-align: left;
+    font-size: 1rem;
+}
+
+.cart-table td {
+    font-size: 1.1rem;
+    color: #333;
+}
+
+/* ==== LINHA DE TOTAL ==== */
+.cart-table .total {
+    background-color: #f08c00;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.cart-table .total td {
+    text-align: right;
+}
+
+/* ==== BOTÃO REMOVER ==== */
+.remover-btn {
+    background-color: #000000;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.2s;
+    font-size: 0.9rem;
+}
+
+.remover-btn:hover {
+    background-color: #f08c00;
+    box-shadow: 5px 5px 20px rgba(0,0,0,0.2);
+    transform: scale(1.05);
+}
+
+.checkout {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.checkout-btn {
+    background-color: #f08c00;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.checkout-btn:hover {
+    background-color: #000000;
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 5px 5px 20px rgba(0,0,0,0.3);
+}
