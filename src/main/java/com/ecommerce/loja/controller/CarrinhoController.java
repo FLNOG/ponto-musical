@@ -49,6 +49,6 @@ public class CarrinhoController {
             session.setAttribute("carrinho", carrinho);
         }
 
-        return "cliente/carrinho/listar";
+        return "redirect:/carrinho";
     }
 }
