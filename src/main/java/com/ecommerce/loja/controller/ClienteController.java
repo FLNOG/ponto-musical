@@ -29,6 +29,11 @@ public class ClienteController {
         model.addAttribute("usuario", new Usuario());
         return "cliente/cadastro";
     }
+    @GetMapping("/minha_conta")
+    public String minhaConta(Model model) {
+        model.addAttribute("usuario", new Usuario());
+        return "cliente/minha_conta";
+    }
 
     @PostMapping("/clientes/cadastrar")
     public String cadastrarCliente(Usuario usuario, Model model) {
