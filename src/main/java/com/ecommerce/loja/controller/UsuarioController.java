@@ -55,6 +55,12 @@ public class UsuarioController {
         return "redirect:/admin/usuarios";
     }
 
+    @GetMapping("/email/{email}")
+    @ResponseBody
+    public Optional<Usuario> buscarPorEmail(@PathVariable String email) {
+        return usuarioService.buscarPorEmail(email);
+    }
+
     @GetMapping("/editar/{id}")
     public String editar(@PathVariable int id, Model model) {
         Optional<Usuario> usuario = usuarioService.buscarPorId(id);
