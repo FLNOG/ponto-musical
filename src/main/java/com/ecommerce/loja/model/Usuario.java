@@ -13,7 +13,7 @@ public class Usuario {
 
     @NotBlank(message = "O nome é obrigatório")
     @Column(nullable = false)
-    private String nome; // Novo campo
+    private String nome;
 
     @Email(message = "E-mail inválido")
     @NotBlank(message = "O e-mail é obrigatório")
@@ -30,6 +30,10 @@ public class Usuario {
 
     @Enumerated(EnumType.STRING)
     private TipoUsuario tipo;
+
+    private String telefone;
+
+    private String dataNascimento;
 
     public Integer getId() {
         return id;
@@ -79,4 +83,19 @@ public class Usuario {
         this.tipo = tipo;
     }
 
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(String dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
 }
