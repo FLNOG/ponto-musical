@@ -31,7 +31,6 @@ public class Usuario {
     @Enumerated(EnumType.STRING)
     private TipoUsuario tipo;
 
-    // 🔥 CAMPOS QUE FALTAVAM PARA FUNCIONAR NA TELA
     private String telefone;
 
     private String dataNascimento;
