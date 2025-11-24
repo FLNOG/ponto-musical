@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - Produtos</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+</head>
+<body>
+<div th:replace="fragments/admin-navbar :: admin-navbar"></div>
+<div class="container mt-4">
+    <h2>Gerenciar Produtos</h2>
+
+    <a href="/admin/produtos/novo" class="btn btn-primary mb-3">+ Novo Produto</a>
+
+    <div th:if="${sucesso}" class="alert alert-success" th:text="${sucesso}"></div>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Preço</th>
+            <th>Estoque</th>
+            <th>Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="p : ${produtos}">
+            <td th:text="${p.id}"></td>
+            <td th:text="${p.nome}"></td>
+            <td th:text="'R$ ' + ${p.preco}"></td>
+            <td th:text="${p.estoque}"></td>
+            <td>
+                <a th:href="@{'/admin/produtos/editar/' + ${p.id}}" class="btn btn-warning btn-sm">Editar</a>
+                <a th:href="@{'/admin/produtos/deletar/' + ${p.id}}" class="btn btn-danger btn-sm"
+                   onclick="return confirm('Deseja realmente deletar este produto?')">Excluir</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script th:src="@{/webjars/bootstrap/5.0.0/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

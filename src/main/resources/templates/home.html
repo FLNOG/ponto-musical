@@ -12,142 +12,89 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Inline:opsz,wght@10..72,100..900&family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
-        rel="stylesheet">
+            href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Inline:opsz,wght@10..72,100..900&family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
+            rel="stylesheet">
 </head>
-    
+
 <body>
 
-    <!-- Header importado -->
-    <div th:replace="fragments/header :: main-header"></div>
+<!-- Header importado -->
+<div th:replace="fragments/header :: main-header"></div>
 
-    <main>
-        <section class="hero">
-            <div class="hero-blur">
-                <div class="hero-content">
-                    <h1>Encontre seu instrumento favorito!</h1>
-                    <p>Descubra o mundo da música por um preço acessivel</p>
-                    <button class="shop-now">Compre agora</button>
-                </div>
+<main>
+    <section class="hero">
+        <div class="hero-blur">
+            <div class="hero-content">
+                <h1>Encontre seu instrumento favorito!</h1>
+                <p>Descubra o mundo da música por um preço acessível</p>
+                <button class="shop-now">Compre agora</button>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Categories Section -->
-        <section class="categories">
-            <div class="category-blur">
-                <h2>Categorias</h2>
-                <div class="category-container">
+    <!-- Categories Section -->
+    <section class="categories">
+        <div class="category-blur">
+            <h2>Categorias</h2>
+            <div class="category-container">
 
-                    <a href="/teste" class="category-card">
-                        <i class="fas fa-guitar"></i>
-                        <p>Strings</p>
-                    </a>
+                <a href="/teste" class="category-card">
+                    <i class="fas fa-guitar"></i>
+                    <p>Strings</p>
+                </a>
 
-                    <a href="/teste" class="category-card">
-                        <i class="fas fa-drum"></i>
-                        <p>Percussion</p>
-                    </a>
+                <a href="/teste" class="category-card">
+                    <i class="fas fa-drum"></i>
+                    <p>Percussion</p>
+                </a>
 
-                    <a href="/teste" class="category-card">
-                        <i class="fas fa-music"></i>
-                        <p>Winds</p>
-                    </a>
+                <a href="/teste" class="category-card">
+                    <i class="fas fa-music"></i>
+                    <p>Winds</p>
+                </a>
 
-                    <a href="/teste" class="category-card">
-                        <i class="fas fa-keyboard"></i>
-                        <p>Keyboards</p>
-                    </a>
+                <a href="/teste" class="category-card">
+                    <i class="fas fa-keyboard"></i>
+                    <p>Keyboards</p>
+                </a>
 
-                    <a href="/teste" class="category-card">
-                        <i class="fas fa-headphones"></i>
-                        <p>Accessories</p>
-                    </a>
-                </div>
+                <a href="/teste" class="category-card">
+                    <i class="fas fa-headphones"></i>
+                    <p>Accessories</p>
+                </a>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Products Section -->
-        <section class="best-sellers">
-            <div class="best-seller-blur">
-                <h2>Nossos produtos mais vendidos</h2>
-                <div class="products-container">
-                    <form class="product-card" method="GET" action="/adicionar">
-                        <input type="hidden" name="produto" value="acoustic-guitar-pro">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Guitar.jpg"
-                            alt="Acoustic Guitar Pro">
+    <!-- Products Section -->
+    <section class="best-sellers">
+        <div class="best-seller-blur">
+            <h2>Nossos produtos mais vendidos</h2>
+            <div class="products-container">
+                <div class="products-container" th:each="produto : ${produtos}">
+                    <form class="product-card" method="post" th:action="@{/carrinho/adicionar}">
+                        <!-- Envia o ID do produto -->
+                        <input type="hidden" name="produtoId" th:value="${produto.id}" />
+                        <img th:src="${produto.imagem}" th:alt="${produto.nome}" />
                         <div class="product-info">
-                            <h3>Acoustic Guitar Pro</h3>
-
-                            <div class="rating">
-                                <span class="stars">★★★★★</span>
-                                <span class="reviews">(124)</span>
-                            </div>
-
-                            <p class="price">$599</p>
+                            <h3 th:text="${produto.nome}"></h3>
+                            <p class="price" th:text="${produto.preco} + ' $'"></p>
                             <button type="submit" class="add-to-cart">
-                                <i class="fas fa-shopping-cart"></i>Add to Cart</button>
-                        </div>
-                    </form>
-
-                    <form class="product-card" method="GET" action="/adicionar">
-                        <input type="hidden" name="produto" value="digital-piano-88">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d8/Yamaha_DGX-620_keyboard.jpg"
-                            alt="Digital Piano 88">
-                        <div class="product-info">
-
-                            <h3>Digital Piano 88</h3>
-                            <div class="rating">
-                                <span class="stars">★★★★★</span>
-                                <span class="reviews">(89)</span>
-                            </div>
-
-                            <p class="price">$1,299</p>
-                            <button type="submit" class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add to
-                                Cart</button>
-                        </div>
-                    </form>
-
-                    <form class="product-card" method="GET" action="/adicionar">
-                        <input type="hidden" name="produto" value="professional-drum-kit">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/8/8f/Drum_kit.jpg"
-                            alt="Professional Drum Kit">
-                        <div class="product-info">
-                            <h3>Professional Drum Kit</h3>
-                            <div class="rating">
-                                <span class="stars">★★★★★</span>
-                                <span class="reviews">(67)</span>
-                            </div>
-                            <p class="price">$899</p>
-                            <button type="submit" class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add to
-                                Cart</button>
-                        </div>
-                    </form>
-
-                    <form class="product-card" method="GET" action="/adicionar">
-                        <input type="hidden" name="produto" value="alto-saxophone">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Saxophone_alto.jpg"
-                            alt="Alto Saxophone">
-                        <div class="product-info">
-                            <h3>Alto Saxophone</h3>
-                            <div class="rating">
-                                <span class="stars">★★★★★</span>
-                                <span class="reviews">(45)</span>
-                            </div>
-                            <p class="price">$1,599</p>
-                            <button type="submit" class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add to
-                                Cart</button>
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
                         </div>
                     </form>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
+</main>
 
-    <!-- Footer importado -->
-    <div th:replace="fragments/footer :: main-footer"></div>
+<!-- Footer importado -->
+<div th:replace="fragments/footer :: main-footer"></div>
 
-    <!-- Scripts -->
-    <script th:src="@{/js/menu-component.js}"></script>
+<!-- Scripts -->
+<script th:src="@{/js/menu-component.js}"></script>
 </body>
 
 </html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Meu Carrinho - Ponto Musical</title>
+
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/header.css" />
+    <link rel="stylesheet" href="/css/footer.css" />
+    <link rel="stylesheet" th:href="@{/css/carrinho.css}">
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+
+<!-- Header -->
+    <div th:replace="fragments/header :: main-header"></div>
+
+<main class="cart-page">
+
+    <section class="cart-hero">
+        <div class="cart-hero-blur">
+            <h1>Seu Carrinho</h1>
+        </div>
+    </section>
+
+    <section class="cart-content">
+
+        <div th:if="${carrinho == null or #lists.isEmpty(carrinho)}">
+            <p>Seu carrinho está vazio.</p>
+            <a href="/" class="checkout-btn">Continuar comprando</a>
+        </div>
+
+        <div th:if="${carrinho != null and !#lists.isEmpty(carrinho)}">
+
+            <table class="cart-table">
+                <thead>
+                <tr>
+                    <th>Produto</th>
+                    <th>Preço</th>
+                    <th>Quantidade</th>
+                    <th>Subtotal</th>
+                    <th>Ações</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="produto : ${carrinho}">
+                    <td th:text="${produto.nome}"></td>
+                    <td th:text="${produto.preco}"></td>
+                    <td>1</td>
+                    <td th:text="${produto.preco}"></td>
+
+                    <td>
+                        <form th:action="@{/carrinho/remover}" method="post">
+                            <input type="hidden" name="produtoId" th:value="${produto.id}">
+                            <button type="submit" class="remover-btn">Remover</button>
+
+                        </form>
+                    </td>
+                </tr>
+                </tbody>
+
+                <tr class="total">
+                    <td colspan="3">Total</td>
+                    <td th:text="${total}"></td>
+                    <td></td>
+                </tr>
+
+            </table>
+
+            <div class="">
+                <a href="/" class="btn btn-primary">Finalizar Compra</a>
+            </div>
+
+        </div>
+
+    </section>
+</main>
+
+
+    <div th:replace="fragments/footer :: main-footer"></div>
+
+<script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
+
+</body>
+</html>

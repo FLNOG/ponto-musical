@@ -1,16 +1,31 @@
 <!-- templates/fragments/header.html -->
 <header id="mainHeader" th:fragment="main-header" xmlns:th="http://www.w3.org/1999/xhtml">
-  <div class="img-container"></div>
+    <div class="img-container"></div>
 
-  <div class="search-bar">
-    <input type="text" id="siteSearch" placeholder="Buscar instrumentos..." />
-    <i class="fas fa-search search-icon"></i>
-  </div>
+    <div class="search-bar">
+        <input type="text" id="siteSearch" placeholder="Buscar instrumentos..." />
+        <i class="fas fa-search search-icon"></i>
+    </div>
 
-  <div class="content-icons">
-    <a href="/login_cliente"><i class="fas fa-user"></i></a>
-    <a href="/carrinho"><i class="fas fa-shopping-cart"></i></a>
-  </div>
+    <div class="content-icons">
+        <!-- Usuário não logado -->
+        <span th:if="${#authentication == null}">
+        <a th:href="@{/login}" title="Login"><i class="fas fa-user"></i></a>
+    </span>
 
-  <script src="/js/menu-component.js"></script>
+        <!-- Usuário logado -->
+        <span th:if="${#authentication != null and #authentication.authenticated}">
+        <a th:href="@{/perfil}" title="Meu perfil"> <!-- adicionar rota -->
+            <i class="fas fa-user"></i>
+            <!-- <span th:text="${#authentication.principal.nome}"></span>  nome real do usuário -->
+        </a>
+        <a th:href="@{/logout}" title="Sair" class="ms-2">
+            <i class="fas fa-sign-out-alt"></i> Sair
+        </a>
+    </span>
+
+        <a th:href="@{/carrinho}" title="Carrinho" class="ms-2"><i class="fas fa-shopping-cart"></i></a>
+    </div>
+
+    <script src="/js/menu-component.js"></script>
 </header>

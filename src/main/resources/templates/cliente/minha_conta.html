@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Minha Conta</title>
+    <link rel="stylesheet" href="/css/minha_conta.css">
+</head>
+<body>
+
+<div class="container">
+
+    <nav class="menu-lateral">
+        <h2>Olá, <span id="nomeUsuarioMenu">Usuário</span>!</h2>
+        <ul>
+            <li><a href="/minha_conta">Meus Dados</a></li>
+            <li><a href="/meus_pedidos">Meus Pedidos</a></li>
+            <li><a href="/logout">Sair</a></li>
+        </ul>
+    </nav>
+
+    <main class="content">
+        <h1>Minha Conta</h1>
+
+        <form id="formConta" action="/admin/usuarios/salvar" method="post">
+
+            <input type="hidden" id="id" name="id">
+
+            <label>Nome:</label>
+            <input type="text" id="nome" name="nome" readonly>
+
+            <label>CPF:</label>
+            <input type="text" id="cpf" name="cpf" readonly>
+
+            <label>Email:</label>
+            <input type="text" id="email" name="email" readonly>
+
+            <label>Telefone:</label>
+            <input type="text" id="telefone" name="telefone" readonly>
+
+            <label>Data de Nascimento:</label>
+            <input type="date" id="dataNascimento" name="dataNascimento" readonly>
+
+            <div class="buttons">
+                <button type="button" id="editarBtn" onclick="ativarEdicao()">Editar</button>
+                <button type="submit" id="salvarBtn" style="display:none;">Salvar Alterações</button>
+            </div>
+        </form>
+
+    </main>
+
+</div>
+
+<script>
+    // 1️⃣ Pega o email salvo no login
+    const emailLogado = localStorage.getItem("emailLogado");
+
+    if (!emailLogado) {
+        alert("Nenhum usuário logado!");
+    } else {
+
+        // 2️⃣ Busca o usuário na API
+        fetch("/admin/usuarios/email/" + emailLogado)
+            .then(resp => resp.json())
+            .then(usuario => {
+                // 3️⃣ Preenche os campos
+                document.getElementById("id").value = usuario.id;
+                document.getElementById("nome").value = usuario.nome;
+                document.getElementById("cpf").value = usuario.cpf;
+                document.getElementById("email").value = usuario.email;
+                document.getElementById("telefone").value = usuario.telefone;
+                document.getElementById("dataNascimento").value = usuario.dataNascimento;
+
+                document.getElementById("nomeUsuarioMenu").innerText = usuario.nome;
+            })
+            .catch(() => alert("Erro ao carregar dados do usuário."));
+    }
+
+    // 4️⃣ Habilita edição dos campos
+    function ativarEdicao() {
+        document.querySelectorAll("input").forEach(c => c.removeAttribute("readonly"));
+        document.getElementById("editarBtn").style.display = "none";
+        document.getElementById("salvarBtn").style.display = "block";
+    }
+</script>
+
+</body>
+</html>

@@ -1,20 +1,20 @@
 create database ponto_musical;
 use ponto_musical;
 
-CREATE TABLE usuario (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(100) NOT NULL,
-    email VARCHAR(100) NOT NULL,
-    senha VARCHAR(100) NOT NULL,
-    cpf VARCHAR(11) NOT NULL,
-    perfil ENUM('CLIENTE', 'ADMINISTRADOR') NOT NULL
+CREATE TABLE IF NOT EXISTS usuario (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    senha VARCHAR(255) NOT NULL,
+    cpf VARCHAR(14) NOT NULL,
+    tipo ENUM('ADMIN', 'CLIENTE') NOT NULL
 );
 
-INSERT INTO usuario (nome, email, senha, cpf, perfil)
-VALUES (
-    'Felipe',
-    'f@fe',
-    'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3',
-    '47272711841',
-    'ADMINISTRADOR'
+CREATE TABLE IF NOT EXISTS produto (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    preco DOUBLE NOT NULL CHECK (preco >= 0),
+    estoque INT NOT NULL DEFAULT 0 CHECK (estoque >= 0),
+    descricao TEXT,
+    imagem VARCHAR(512)
 );
