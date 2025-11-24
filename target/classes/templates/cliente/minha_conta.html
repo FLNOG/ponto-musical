@@ -13,7 +13,7 @@
         <h2>Olá, <span id="nomeUsuarioMenu">Usuário</span>!</h2>
         <ul>
             <li><a href="/minha_conta">Meus Dados</a></li>
-            <li><a href="/meus_pedidos">Meus Pedidos</a></li>
+            <li><a th:href="@{/}">Home</a></li>
             <li><a href="/logout">Sair</a></li>
         </ul>
     </nav>
@@ -21,8 +21,7 @@
     <main class="content">
         <h1>Minha Conta</h1>
 
-        <form id="formConta" action="/admin/usuarios/salvar" method="post">
-
+        <form id="formConta" action="/usuario/atualizar" method="post">
             <input type="hidden" id="id" name="id">
 
             <label>Nome:</label>
@@ -41,7 +40,7 @@
             <input type="date" id="dataNascimento" name="dataNascimento" readonly>
 
             <div class="buttons">
-                <button type="button" id="editarBtn" onclick="ativarEdicao()">Editar</button>
+                <button type="button" id="editarBtn">Editar</button>
                 <button type="submit" id="salvarBtn" style="display:none;">Salvar Alterações</button>
             </div>
         </form>
@@ -51,36 +50,61 @@
 </div>
 
 <script>
-    // 1️⃣ Pega o email salvo no login
-    const emailLogado = localStorage.getItem("emailLogado");
+    let dadosCarregados = false;
 
-    if (!emailLogado) {
-        alert("Nenhum usuário logado!");
-    } else {
+    fetch("/usuario/logado")
+        .then(r => {
+            if (!r.ok) throw new Error('Erro ao buscar usuario: ' + r.status);
+            return r.json();
+        })
+        .then(usuario => {
+            document.getElementById("id").value = usuario.id ?? "";
+            document.getElementById("nome").value = usuario.nome ?? "";
+            document.getElementById("cpf").value = usuario.cpf ?? "";
+            document.getElementById("email").value = usuario.email ?? "";
+            document.getElementById("telefone").value = usuario.telefone ?? "";
+            document.getElementById("dataNascimento").value = usuario.dataNascimento ?? "";
 
-        // 2️⃣ Busca o usuário na API
-        fetch("/admin/usuarios/email/" + emailLogado)
-            .then(resp => resp.json())
-            .then(usuario => {
-                // 3️⃣ Preenche os campos
-                document.getElementById("id").value = usuario.id;
-                document.getElementById("nome").value = usuario.nome;
-                document.getElementById("cpf").value = usuario.cpf;
-                document.getElementById("email").value = usuario.email;
-                document.getElementById("telefone").value = usuario.telefone;
-                document.getElementById("dataNascimento").value = usuario.dataNascimento;
+            document.getElementById("nomeUsuarioMenu").innerText = usuario.nome ?? "Usuário";
 
-                document.getElementById("nomeUsuarioMenu").innerText = usuario.nome;
-            })
-            .catch(() => alert("Erro ao carregar dados do usuário."));
-    }
+            dadosCarregados = true;
+        })
+        .catch(err => {
+            console.error("Erro ao carregar dados do usuário:", err);
+            alert("Erro ao carregar dados do usuário. Veja console.");
+        });
 
-    // 4️⃣ Habilita edição dos campos
     function ativarEdicao() {
-        document.querySelectorAll("input").forEach(c => c.removeAttribute("readonly"));
+        if (!dadosCarregados) {
+            alert("Aguarde: dados ainda estão sendo carregados.");
+            return;
+        }
+
+        const camposEditaveis = ["nome", "telefone", "dataNascimento"];
+        camposEditaveis.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.removeAttribute("readonly");
+        });
+
         document.getElementById("editarBtn").style.display = "none";
-        document.getElementById("salvarBtn").style.display = "block";
+        document.getElementById("salvarBtn").style.display = "inline-block";
     }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const editar = document.getElementById("editarBtn");
+        if (editar) editar.addEventListener("click", ativarEdicao);
+    });
+
+    document.getElementById("formConta").addEventListener("submit", function (evt) {
+        const nome = document.getElementById("nome").value.trim();
+        if (!nome) {
+            evt.preventDefault();
+            alert("Nome não pode ficar vazio.");
+            return false;
+        }
+
+        return true;
+    });
 </script>
 
 </body>
