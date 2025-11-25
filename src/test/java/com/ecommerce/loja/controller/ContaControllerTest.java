@@ -9,7 +9,7 @@ import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
+
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
@@ -29,7 +29,7 @@ class ContaControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
-    @MockBean
+
     private UsuarioService usuarioService;
 
     private Usuario usuario;

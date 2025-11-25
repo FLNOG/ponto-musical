@@ -1,12 +1,12 @@
 package com.ecommerce.loja.controller;
 
-import com.ecommerce.loja.model.TipoUsuario;
+
 import com.ecommerce.loja.model.Usuario;
 import com.ecommerce.loja.service.UsuarioService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -22,10 +22,10 @@ class ClienteControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
-    @MockBean
+
     private UsuarioService usuarioService;
 
-    @MockBean
+
     private PasswordEncoder passwordEncoder;
 
     @Test
