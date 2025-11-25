@@ -31,17 +31,9 @@ public class ClienteController {
     }
     @GetMapping("/minha_conta")
     public String minhaConta(Model model) {
-        model.addAttribute("usuario", new Usuario()); // vazio mesmo
+        model.addAttribute("usuario", new Usuario());
         return "cliente/minha_conta";
     }
-
-    @GetMapping("/meus_pedidos")
-    public String meusPedidos(Model model) {
-        model.addAttribute("usuario", new Usuario());
-        model.addAttribute("pedidos", List.of()); // lista vazia pra evitar erro
-        return "cliente/meus_pedidos";  // <--- TEM QUE SER ESTE NOME
-    }
-
 
     @PostMapping("/clientes/cadastrar")
     public String cadastrarCliente(Usuario usuario, Model model) {

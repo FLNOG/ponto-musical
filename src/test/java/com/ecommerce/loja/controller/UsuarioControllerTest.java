@@ -23,10 +23,10 @@ class UsuarioControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
-    @MockBean
+
     private UsuarioService usuarioService;
 
-    @MockBean
+
     private PasswordEncoder passwordEncoder;
 
     @Test
